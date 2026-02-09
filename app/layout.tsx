@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Providers } from "./providers";
 import PostHogPageView from "./posthog-pageview";
+import { Suspense } from "react";
 
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
@@ -46,10 +47,12 @@ export default function RootLayout({
           />
         </div>
         <main>
+          <Suspense fallback={null}>
           <Providers>
-            <PostHogPageView />
+              <PostHogPageView />
             {children}
           </Providers>
+          </Suspense>
         </main>
       </body>
     </html>

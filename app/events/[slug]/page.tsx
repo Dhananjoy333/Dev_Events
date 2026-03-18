@@ -19,8 +19,8 @@ const EventAgenda = ({ agendaItems }: { agendaItems: string[]}) => (
   <div className='agenda'>
     <h2>Agenda</h2>
     <ul>
-      {agendaItems.map((item) => (
-        <li key={item}>{item}</li>
+      {agendaItems.map((item, index) => (
+        <li key={`${item}-${index}`}>{item}</li>
       ))}
     </ul>
   </div>
@@ -125,7 +125,7 @@ const {
         <h2>Similar Events</h2>
         <div className='events'>
           {similarEvents.length > 0 && similarEvents.map((similarEvent: IEvent) => (
-            <EventCard key={similarEvent.title} {...similarEvent}/>
+            <EventCard key={similarEvent._id.toString()} {...similarEvent}/>
           ))}
         </div>
       </div>
